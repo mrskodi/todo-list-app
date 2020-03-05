@@ -1,0 +1,29 @@
+<div class="jumbotron" style="padding: 45px, 0px;">
+  <h4 class="text-center">My Todo items</h4>
+</div>
+
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="Enter todo Item" #todoListItem>
+  <div  class="input-group-addon">
+    <span><i class="far fa-plus-square hover-cursor" (click)="add(todoListItem)"></i></span>
+  </div>
+</div>
+
+<div style="margin: 5px, 0px;">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let myListArrayItem of myListArray">
+
+    <span class="hover-cursor" [class.text-success]="myListArrayItem.isChecked" (click)="changeStatus(myListArrayItem.$key, myListArrayItem.isChecked)">
+    <i class="far fa-lg" [ngClass]="myListArrayItem.isChecked? 'fa-check-circle':'fa-circle'">
+    </i>
+    </span>
+      <span [style.color]="myListArrayItem.isChecked? 'green': 'black'">
+      {{myListArrayItem.title}}
+      </span>
+    <span class="hover-cursor pull-right text-danger" (click)="remove(myListArrayItem.$key)">
+        <i class="fas fa-trash"></i>
+    </span>
+
+    </li>
+  </ul>
+</div>
